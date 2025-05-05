@@ -1,0 +1,35 @@
+/*
+ * Add columns to event post list
+ */
+ function add_eventdate_columns ( $columns ) {
+   return array_merge ( $columns, array ( 
+     'start_date' => __ ( 'Starts' ),
+     'end_date'   => __ ( 'Ends' ) 
+   ) );
+ }
+ add_filter ( 'manage_[your_custom_post_type]_posts_columns', 'add_eventdate_columns' );
+
+ /*
+ * Add columns to event post list
+ */
+ function events_custom_column ( $column, $post_id ) {
+   switch ( $column ) {
+     case 'start_date':
+	 	$iso_date = get_post_meta($post_id, '_piecal_start_date', true);
+    	if ($iso_date) {
+        	$formatted_date = date('F j, Y, g:i a', strtotime($iso_date));
+        	echo $formatted_date;
+    	} 
+       
+      	break;
+     case 'end_date':
+	 	$iso_date = get_post_meta($post_id, '_piecal_end_date', true);
+    	if ($iso_date) {
+        	$formatted_date = date('F j, Y, g:i a', strtotime($iso_date));
+        	echo $formatted_date;
+    	}
+       
+       break;
+   }
+ }
+ add_action ( 'manage_[your_custom_post_type]_posts_custom_column', 'events_custom_column', 10, 2 );
