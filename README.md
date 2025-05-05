@@ -13,6 +13,8 @@ You'll also need code or a plugin to create the custom post types. In this examp
 - Remember to add your custom post type where you see square brackets [your_custom_post_type]
 - Save
 
+Note: There are two functions here: the first adds the columns using a filter, and the second adds the meta from the custom post type posts. Note there is a conversion from Pie Calendar's ISO date format to a more standard datetime format that is much more readable.
+
 
 ## Additional Resources
 - [Pie Calendar Meta Fields]([https://developer.wordpress.org/reference/classes/wp_query/#parameters](https://docs.piecalendar.com/article/47-display-pie-calendar-meta-fields-in-admin-edit-screens))
